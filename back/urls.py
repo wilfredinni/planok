@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from tasks.views import TaskViewSet
 
+task_list = TaskViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tasks/', task_list, name='snippet-list')
+
+
 ]
